@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#041426">
+  <meta name="description" content="A fictional-data demo dashboard for reviewing marine debris candidates and recording field verification and cleanup actions.">
+  <title>Plastic Intelligence — Demo Operations</title>
+  <link rel="icon" href="/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/styles-ocean.css">
+  <script type="module" src="/src/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to dashboard content</a>
+  <div class="water-wash" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#dashboard" aria-label="Plastic Intelligence dashboard">
+        <svg class="brand-mark" viewBox="0 0 42 42" aria-hidden="true">
+          <circle cx="21" cy="21" r="19" fill="#e4f6ff" />
+          <path d="M7 24c4.5-5 8.8-5 13 0s8.5 5 15 0" fill="none" stroke="#168bbd" stroke-width="3" stroke-linecap="round"/>
+          <path d="M14 16c1.8-2.4 3.6-2.4 5.4 0s3.6 2.4 5.4 0" fill="none" stroke="#36bdeb" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="29" cy="14" r="2.2" fill="#36bdeb"/>
+        </svg>
+        <span class="brand-name">Plastic <strong>Intelligence</strong><small>FIELD OPERATIONS · DEMO</small></span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <a href="#dashboard" data-nav="dashboard">Dashboard</a>
+        <a href="#hotspots" data-nav="hotspots">Hotspots</a>
+        <a href="#missions" data-nav="missions">Missions</a>
+        <a href="#analytics" data-nav="analytics">Analytics</a>
+        <a href="#history" data-nav="history">History</a>
+      </nav>
+      <div class="header-actions">
+        <span class="demo-pill"><span class="pulse-dot" aria-hidden="true"></span> Demo data</span>
+        <button class="icon-button notification-trigger" id="notificationToggle" type="button" aria-label="Open notifications, 0 unread" aria-haspopup="dialog" aria-controls="notificationsDialog">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg>
+          <span class="notification-count" id="notificationCount" aria-hidden="true">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="page-shell">
+    <section id="dashboard" class="section dashboard-section" aria-labelledby="page-title">
+      <div class="overview-top">
+        <div class="overview-copy">
+          <p class="eyebrow"><span class="eyebrow-rule"></span> COASTAL RESPONSE OVERVIEW <span class="freshness" id="lastUpdated">DEMO SNAPSHOT</span></p>
+          <h1 id="page-title">Plastic <span>Intelligence</span></h1>
+          <p class="lede">Move from a suspected signal to a verified field decision—and a separately recorded cleanup.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#hotspots">Explore hotspots <span aria-hidden="true">↗</span></a>
+            <a class="text-link" href="#missions">View field missions <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+        <div class="hero-dolphin-stage">
+          <span class="dolphin-light" aria-hidden="true"></span>
+          <img class="hero-dolphin" src="/manus-storage/async-images/dDclJ2jI84Qa1sdhsdzKL2/image-2.webp" alt="Illustrative dolphin swimming through a beam of ocean light" fetchpriority="high">
+          <span class="dolphin-caption">DOLPHIN · ILLUSTRATIVE MARINE LIFE</span>
+        </div>
+        <aside class="overview-aside" aria-label="Demo scope">
+          <div class="aside-icon" aria-hidden="true">≈</div>
+          <p><strong>Evidence before claims.</strong><br>Every location, observation, trajectory, and team below is illustrative demo data—not a live detection feed.</p>
+          <span class="aside-foot">LOCAL DEMO · NOT AN OPERATIONAL FORECAST</span>
+        </aside>
+      </div>
+
+      <div class="metric-grid" id="metricGrid" aria-label="Dashboard metrics"></div>
+      <div class="notice notice-info" role="note">
+        <span class="notice-symbol" aria-hidden="true">i</span>
+        <p><strong>Simulated demo data.</strong> Candidate observations are not confirmed plastic. Field verification and cleanup completion are recorded as separate actions. Your changes stay in this browser only.</p>
+      </div>
+    </section>
+
+    <section id="hotspots" class="section" aria-labelledby="hotspots-title">
+      <div class="section-heading-row">
+        <div><p class="eyebrow">01 / REVIEW THE SIGNAL</p><h2 id="hotspots-title">Candidate hotspots</h2><p class="section-intro">Illustrative regional view · fictional sample points · schematic only, not surveyed geography</p></div>
+        <span class="section-count" id="hotspotCount">0 records</span>
+      </div>
+      <div class="map-layout">
+        <article class="panel map-panel">
+          <div class="panel-heading">
+            <div><h3>Regional watch</h3><p>India-adjacent demo regions · not to scale</p></div>
+            <span class="map-label"><span class="live-dot" aria-hidden="true"></span> SAMPLE VIEW</span>
+          </div>
+          <div id="mapCanvas" class="map-canvas" aria-label="Illustrative regional schematic"></div>
+          <div class="map-footer"><div class="priority-legend" aria-label="Priority legend"><span><i class="legend-dot high"></i>High</span><span><i class="legend-dot medium"></i>Medium</span><span><i class="legend-dot low"></i>Low</span></div><span class="map-disclaimer">Fictional points · no precise coordinates</span></div>
+        </article>
+        <article class="panel hotspot-panel">
+          <div class="panel-heading list-heading">
+            <div><h3>Needs a closer look</h3><p>Choose a candidate to inspect the evidence</p></div>
+            <span class="list-icon" aria-hidden="true">⌖</span>
+          </div>
+          <div class="filter-row hotspot-filter-row">
+            <label class="sr-only" for="hotspotPriorityFilter">Filter hotspots by priority</label>
+            <select id="hotspotPriorityFilter" class="compact-select"><option value="all">All priorities</option><option value="high">High priority</option><option value="medium">Medium priority</option><option value="low">Low priority</option></select>
+            <label class="sr-only" for="hotspotStatusFilter">Filter hotspots by verification status</label>
+            <select id="hotspotStatusFilter" class="compact-select"><option value="all">All verification states</option><option value="pending">Pending verification</option><option value="confirmed">Confirmed</option><option value="rejected">Rejected</option><option value="inconclusive">Inconclusive</option></select>
+            <button class="button button-quiet button-small" type="button" data-action="clear-hotspot-filters">Clear</button><span id="hotspotResultCount" class="filter-result" aria-live="polite"></span>
+          </div>
+          <div id="hotspotList" class="hotspot-list" aria-live="polite"></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="priority" class="section compact-section" aria-labelledby="priority-title">
+      <div class="section-heading-row">
+        <div><p class="eyebrow">02 / COMPARE WITH CARE</p><h2 id="priority-title">Recommended attention</h2><p class="section-intro">An illustrative ordering that weighs severity, movement, sensitivity, uncertainty, and available capacity—not confidence alone.</p></div>
+        <span class="soft-tag">DEMO PRIORITY · NOT SCIENTIFICALLY VALIDATED</span>
+      </div>
+      <div id="priorityCards" class="priority-grid"></div>
+    </section>
+
+    <section id="details" class="section detail-section" aria-labelledby="details-title">
+      <div class="section-heading-row">
+        <div><p class="eyebrow">03 / INSPECT THE EVIDENCE</p><h2 id="details-title">Hotspot intelligence</h2><p class="section-intro">One candidate record, with uncertainty and next steps kept in view.</p></div>
+        <span class="soft-tag">SIMULATED INTELLIGENCE</span>
+      </div>
+      <article class="panel detail-panel" id="detailPanel" aria-live="polite"></article>
+    </section>
+
+    <section id="missions" class="section" aria-labelledby="missions-title">
+      <div class="section-heading-row">
+        <div><p class="eyebrow">04 / COORDINATE FIELD WORK</p><h2 id="missions-title" tabindex="-1">Field missions</h2><p class="section-intro">Assignment, verification, and cleanup are distinct steps in the record.</p></div>
+        <button id="verify-selected" class="button button-secondary" type="button" data-action="verify-selected">Record field verification</button>
+      </div>
+      <div id="missionStats" class="mission-stats" aria-label="Mission status counts"></div>
+      <article class="panel mission-panel">
+        <div class="filter-row mission-filters">
+          <label class="sr-only" for="missionStatusFilter">Filter missions by status</label>
+          <select id="missionStatusFilter" class="compact-select"><option value="all">All mission statuses</option><option value="new">New</option><option value="assigned">Assigned</option><option value="in_progress">In progress</option><option value="awaiting_verification">Awaiting verification</option><option value="completed">Completed</option><option value="unable_to_complete">Unable to complete</option></select>
+          <label class="sr-only" for="missionPriorityFilter">Filter missions by priority</label>
+          <select id="missionPriorityFilter" class="compact-select"><option value="all">All priorities</option><option value="high">High priority</option><option value="medium">Medium priority</option><option value="low">Low priority</option></select>
+          <button class="button button-quiet button-small" type="button" data-action="clear-mission-filters">Clear filters</button>
+          <span class="filter-result" id="missionResultCount"></span>
+        </div>
+        <div id="missionList" class="mission-list" aria-live="polite"></div>
+      </article>
+    </section>
+
+    <section id="analytics" class="section" aria-labelledby="analytics-title">
+      <div class="section-heading-row">
+        <div><p class="eyebrow">05 / READ THE SAMPLE</p><h2 id="analytics-title">Demo analytics</h2><p class="section-intro">Computed from the same hotspot, mission, and verification records shown above.</p></div>
+        <span class="soft-tag">SAMPLE SIZE IS LIMITED</span>
+      </div>
+      <div id="analyticsSummary" class="analytics-summary"></div>
+      <div id="analyticsCharts" class="analytics-grid"></div>
+      <p class="analytics-caveat">These summaries describe only fictional seed data and actions recorded in this browser. They are not environmental impact estimates or a learned prediction.</p>
+    </section>
+
+    <section id="history" class="section history-section" aria-labelledby="history-title">
+      <div class="section-heading-row">
+        <div><p class="eyebrow">06 / KEEP AN AUDIT TRAIL</p><h2 id="history-title">Event history</h2><p class="section-intro">Seeded sample records and actions taken in this browser, newest first.</p></div>
+        <button id="open-reset" class="button button-quiet" type="button" data-action="open-reset">Reset demo data</button>
+      </div>
+      <article class="panel history-panel">
+        <div class="filter-row history-filters">
+          <label class="sr-only" for="historyPeriod">History reporting period</label><select id="historyPeriod" class="compact-select"><option value="all">All demo history</option><option value="30">Last 30 days</option><option value="90">Last 90 days</option></select>
+          <label class="sr-only" for="historyRegion">Filter history by region</label><select id="historyRegion" class="compact-select"><option value="all">All regions</option></select>
+          <label class="sr-only" for="historyPriority">Filter history by hotspot priority</label><select id="historyPriority" class="compact-select"><option value="all">All priorities</option><option value="high">High priority</option><option value="medium">Medium priority</option><option value="low">Low priority</option></select>
+          <label class="sr-only" for="historyVerification">Filter history by verification status</label><select id="historyVerification" class="compact-select"><option value="all">All verification states</option><option value="pending">Pending verification</option><option value="confirmed">Confirmed</option><option value="rejected">Rejected</option><option value="inconclusive">Inconclusive</option></select>
+          <label class="sr-only" for="historyMissionStatus">Filter history by mission status</label><select id="historyMissionStatus" class="compact-select"><option value="all">All mission statuses</option><option value="new">New</option><option value="assigned">Assigned</option><option value="in_progress">In progress</option><option value="awaiting_verification">Awaiting verification</option><option value="completed">Completed</option><option value="unable_to_complete">Unable to complete</option></select>
+          <button class="button button-quiet button-small" type="button" data-action="clear-history-filters">Clear filters</button>
+        </div>
+        <div id="historyFeed" class="history-feed" aria-live="polite"></div>
+      </article>
+    </section>
+
+    <footer class="site-footer"><a class="footer-brand" href="#dashboard">Plastic Intelligence</a><span>Fictional demo data · Browser-local only · Not an operational service</span><span>Built for careful review, not automated dispatch.</span></footer>
+  </main>
+
+  <div id="appMessage" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+  <div id="storageWarning" class="storage-warning" role="status" aria-live="polite" hidden></div>
+
+  <dialog id="missionDialog" class="app-dialog" aria-labelledby="missionDialogTitle">
+    <form id="missionForm" class="dialog-form" novalidate>
+      <div class="dialog-heading"><div><p class="eyebrow">NEW FIELD RECORD</p><h2 id="missionDialogTitle">Assign cleanup mission</h2><p id="missionHotspotLabel" class="dialog-subtitle"></p></div><button class="icon-button dialog-close" type="button" data-action="close-dialog" aria-label="Close mission form">×</button></div>
+      <input type="hidden" name="hotspotId" id="missionHotspotId">
+      <p id="missionError" class="form-error" role="alert"></p>
+      <label class="field-label" for="missionTeam">Assigned team <span class="required">Required</span></label><select id="missionTeam" name="teamId" required></select>
+      <div class="field-columns"><div><label class="field-label" for="missionType">Mission type <span class="required">Required</span></label><select id="missionType" name="missionType" required><option value="cleanup">Cleanup</option><option value="field_verification">Field verification</option><option value="combined">Combined</option></select></div><div><label class="field-label" for="missionPriority">Priority <span class="required">Required</span></label><select id="missionPriority" name="priority" required><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option></select></div></div>
+      <label class="field-label" for="missionActionWindow">Suggested action window <span class="required">Required</span></label><select id="missionActionWindow" name="actionWindow" required><option value="">Choose a demo action window</option><option>Immediate review</option><option>Within 24 hours</option><option>Within 48 hours</option><option>Routine monitoring</option></select>
+      <label class="field-label" for="missionDeadline">Optional target date</label><input id="missionDeadline" name="deadline" type="date">
+      <label class="field-label" for="missionNotes">Notes <span class="optional">Optional</span></label><textarea id="missionNotes" name="notes" rows="3" maxlength="500" placeholder="Add a short handoff note"></textarea>
+      <div class="dialog-actions"><button class="button button-quiet" type="button" data-action="close-dialog">Cancel</button><button class="button button-primary" type="submit">Assign mission</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="verificationDialog" class="app-dialog" aria-labelledby="verificationDialogTitle">
+    <form id="verificationForm" class="dialog-form" novalidate>
+      <div class="dialog-heading"><div><p class="eyebrow">FIELD VERIFICATION</p><h2 id="verificationDialogTitle">Record an observation</h2><p class="dialog-subtitle">This changes the verification record only—not cleanup status.</p></div><button class="icon-button dialog-close" type="button" data-action="close-dialog" aria-label="Close verification form">×</button></div>
+      <p id="verificationError" class="form-error" role="alert"></p>
+      <label class="field-label" for="verifyHotspot">Linked hotspot <span class="required">Required</span></label><select id="verifyHotspot" name="hotspotId" required></select>
+      <label class="field-label" for="verifyMission">Related mission <span class="optional">Optional</span></label><select id="verifyMission" name="missionId"><option value="">No mission linked</option></select>
+      <fieldset class="outcome-fieldset"><legend>Field outcome <span class="required">Required</span></legend><label class="choice-card"><input type="radio" name="outcome" value="confirmed" required><span><strong>Plastic/debris confirmed</strong><small>Candidate confirmed in this fictional demo</small></span></label><label class="choice-card"><input type="radio" name="outcome" value="rejected" required><span><strong>Suspected detection rejected</strong><small>Alternative explanation observed</small></span></label><label class="choice-card"><input type="radio" name="outcome" value="inconclusive" required><span><strong>Inconclusive</strong><small>Further verification needed</small></span></label></fieldset>
+      <label class="field-label" for="verifierName">Verifier / team <span class="required">Required</span></label><input id="verifierName" name="verifier" required maxlength="80" placeholder="Choose or enter a demo team name" list="teamOptions">
+      <label class="field-label" for="verificationNotes">Evidence notes <span class="optional">Optional</span></label><textarea id="verificationNotes" name="notes" maxlength="500" rows="3" placeholder="Record observations and uncertainty"></textarea>
+      <div class="dialog-actions"><button class="button button-quiet" type="button" data-action="close-dialog">Cancel</button><button class="button button-primary" type="submit">Save verification</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="cleanupDialog" class="app-dialog" aria-labelledby="cleanupDialogTitle">
+    <form id="cleanupForm" class="dialog-form" novalidate>
+      <div class="dialog-heading"><div><p class="eyebrow">SEPARATE CLEANUP RECORD</p><h2 id="cleanupDialogTitle">Record cleanup result</h2><p id="cleanupMissionLabel" class="dialog-subtitle"></p></div><button class="icon-button dialog-close" type="button" data-action="close-dialog" aria-label="Close cleanup form">×</button></div>
+      <input type="hidden" name="missionId" id="cleanupMissionId">
+      <p id="cleanupError" class="form-error" role="alert"></p>
+      <label class="field-label" for="cleanupTimestamp">Reported at <span class="required">Required</span></label><input id="cleanupTimestamp" name="timestamp" type="datetime-local" required>
+      <label class="field-label" for="cleanupResult">Cleanup result <span class="required">Required</span></label><select id="cleanupResult" name="result" required><option value="completed">Completed</option><option value="unable_to_complete">Unable to complete</option></select>
+      <div class="field-columns"><div><label class="field-label" for="recoveredQuantity">Recovered material quantity <span class="optional">Optional</span></label><input id="recoveredQuantity" name="quantity" type="number" min="0" step="any" inputmode="decimal" placeholder="Not reported"></div><div><label class="field-label" for="recoveredUnit">Unit <span class="required">Required if quantity supplied</span></label><select id="recoveredUnit" name="unit"><option value="">No quantity reported</option><option value="kg">kg</option><option value="g">g</option><option value="items">items</option><option value="bags">bags</option></select></div></div>
+      <label class="field-label" for="cleanupNotes">Notes <span class="optional">Optional</span></label><textarea id="cleanupNotes" name="notes" rows="3" maxlength="500" placeholder="Add a short result note"></textarea>
+      <div id="cleanupCorrectionFields" hidden><label class="field-label" for="cleanupCorrectionReason">Correction reason <span class="required">Required</span></label><textarea id="cleanupCorrectionReason" name="correctionReason" rows="2" maxlength="300" placeholder="Explain why this previously recorded result is being corrected"></textarea></div>
+      <label class="confirmation-check"><input id="cleanupConfirm" name="confirmation" type="checkbox" required><span>I have reviewed this report and confirm that this is the recorded field outcome.</span></label>
+      <div class="dialog-actions"><button class="button button-quiet" type="button" data-action="close-dialog">Cancel</button><button class="button button-primary" type="submit">Save cleanup result</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="notificationsDialog" class="app-dialog notification-dialog" aria-labelledby="notificationsTitle">
+    <div class="dialog-heading"><div><p class="eyebrow">APPLICATION EVENTS ONLY</p><h2 id="notificationsTitle">Notifications</h2><p class="dialog-subtitle">No email, SMS, push, or external alerts are sent.</p></div><button class="icon-button dialog-close" type="button" data-action="close-dialog" aria-label="Close notifications">×</button></div>
+    <div id="notificationList" class="notification-list"></div>
+  </dialog>
+
+  <dialog id="resetDialog" class="app-dialog reset-dialog" aria-labelledby="resetDialogTitle">
+    <div class="dialog-heading"><div><p class="eyebrow">BROWSER-LOCAL DEMO</p><h2 id="resetDialogTitle">Reset demo data?</h2><p class="dialog-subtitle">This replaces locally saved changes with the fictional seed records in this browser. It does not affect other users.</p></div><button class="icon-button dialog-close" type="button" data-action="close-dialog" aria-label="Close reset dialog">×</button></div>
+    <div class="dialog-actions"><button class="button button-quiet" type="button" data-action="close-dialog">Keep my changes</button><button class="button button-danger" type="button" data-action="confirm-reset">Reset to demo data</button></div>
+  </dialog>
+
+  <datalist id="teamOptions"></datalist>
+</body>
+</html>

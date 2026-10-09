@@ -1,0 +1,9 @@
+{
+  "name": "plastic-intelligence-demo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check server.js && node --check src/data.js && node --check src/state.js && node --check src/map.js && node --check src/app.js"
+  }
+}
